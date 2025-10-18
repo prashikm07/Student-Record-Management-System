@@ -1,0 +1,45 @@
+from database import initialize_db, add_student, view_students, update_student, delete_student
+
+def menu():
+    print("\n📘 Student Record Management")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Update Student")
+    print("4. Delete Student")
+    print("5. Exit")
+
+def main():
+    initialize_db()
+
+    while True:
+        menu()
+        choice = input("Enter choice: ")
+
+        if choice == '1':
+            name = input("Enter student name: ")
+            age = input("Enter student age: ")
+            grade = input("Enter student grade: ")
+            add_student(name, age, grade)
+
+        elif choice == '2':
+            view_students()
+
+        elif choice == '3':
+            student_id = input("Enter student ID to update: ")
+            name = input("New name: ")
+            age = input("New age: ")
+            grade = input("New grade: ")
+            update_student(student_id, name, age, grade)
+
+        elif choice == '4':
+            student_id = input("Enter student ID to delete: ")
+            delete_student(student_id)
+
+        elif choice == '5':
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
